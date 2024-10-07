@@ -15,5 +15,10 @@ namespace Project1Portfolio.Controllers
             var values = context.Skill.ToList();
             return PartialView("PartialChartSkill", values);
         }
+        public PartialViewResult Index()
+        {
+            var values = context.Grafic.ToList();
+            return PartialView("PartialChartSkill", values);
+        }
     }
 }

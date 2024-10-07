@@ -30,11 +30,13 @@
         </tr>
     }
 </table>
-@Html.PagedListPager((IPagedList)Model, p => Url.Action("SkillList", new {p}),new PagedListRenderOptions
+@Html.PagedListPager((IPagedList)Model, p => Url.Action("SkillList", new { p }), new PagedListRenderOptions
 {
-    LiElementClasses=new List<string>
+    LiElementClasses = new List<string>
     {"page-link"}
 })
 
 <a href="/Skill/CreateSkill/" class="btn btn-info">Yeni Yetenek Girişi</a>
+
+@Html.Action("PartialChartSkill", "Grafic")
 
