@@ -1,0 +1,74 @@
+﻿@model List<Project1Portfolio.Models.Message>
+@{
+    ViewBag.Title = "Inbox";
+    Layout = "~/Views/Admin/Index.cshtml";
+    string color="";
+}
+
+<h2 class="mb-4">Gelen Mesajlar</h2>
+<table class="table table-bordered">
+    
+    <tr>
+        <th>#</th>
+        <th>Gönderen</th>
+        <th>Konu</th>
+        <th>Tarih</th>
+        <th>Kategori</th>
+        <th>Durum</th>
+        <th>Sil</th>
+        <th>Mesajı Aç</th>
+    </tr>
+
+    @foreach (var item in Model)
+                {
+                    switch (item.Category.CategoryName)
+                    {
+                        case "Teşekkür":
+                            color = "royalblue";
+                            break;
+
+                        case "Proje Talebi":
+                            color = "green";
+                            break;
+
+                        case "Şikayet ":
+                            color = "gold";
+                            break;
+
+                        case "Öneri":
+                            color = "pink";
+                            break;
+
+                        case "Kutlama":
+                            color = "darkorange";
+                            break;
+
+                        case "Diğer":
+                            color = "gray"; 
+                            break;
+                    }
+
+
+            <tr>
+                <td>@item.Mesaageid</td>
+                <td>@item.Name</td>
+                <td>@item.Subject</td>
+                <td>@item.SendDate</td>
+                <td style="background-color:@color;">@item.Category.CategoryName</td>
+
+                @if (item.İsRead == false)
+                            {
+                    <td><a href="/Message/MessageStatusChangeToTrue/@item.Mesaageid" class="btn btn-info">Okundu Olarak İşaretle</a></td>
+                }
+                else
+                {
+                    <td><a href="/Message/MessageStatusChangeToFalse/@item.Mesaageid" class="byn btn-warning">Okunmadı Olarak İşaretle</a></td>
+                }
+
+                <td><a href="#" class="btn btn-danger">Sil</a> </td>
+                <td><a href="/Message/MessageDetails/@item.Mesaageid" class="btn btn-success">Mesajı Aç</a> </td>
+                <
+            </tr>
+    }
+    </table>
+

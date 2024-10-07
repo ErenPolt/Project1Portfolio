@@ -1,0 +1,20 @@
+﻿@model Project1Portfolio.Models.Services
+@{
+    ViewBag.Title = "UpdateServices";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<h2 class="mb-4">Hizmet Güncelle</h2>
+<form method="post">
+    @Html.HiddenFor(x => x.Servicesİd, new { @class = "form-control" })
+    <label>Başlık</label>
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+    <br />
+    <label>Açıklama</label>
+    @Html.TextAreaFor(x => x.Description, 4, 0, new { @class = "form-control" })
+    <br />
+    <label>Icon</label>
+    @Html.TextAreaFor(x => x.İcon, 2, 0, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Güncelle</button>
+</form>
